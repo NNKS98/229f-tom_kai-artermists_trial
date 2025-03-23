@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     [SerializeField] int speed;
-    [SerializeField] float maxSpeed = 5f;
+    public float maxSpeed = 5f;
     [SerializeField] float drag = 2f; // Adjust to control slowdown speed
     Rigidbody rb;
     public GameObject BulletPrefab;
@@ -48,9 +48,15 @@ public class MovePlayer : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.name == "Enemy")
+        if (other.gameObject.name == "Enemy")
         {
             Destroy(gameObject);
+        }
+
+        if(other.gameObject.name == "RedFloor")
+        {
+            maxSpeed = 3f;
+
         }
     }
 }
