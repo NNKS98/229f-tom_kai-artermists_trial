@@ -3,29 +3,24 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     [SerializeField] int speed;
+    [SerializeField] float drag = 2f; // Adjust to control slowdown speed
     Rigidbody rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
+    private void Start()
     {
-        
+        rb.linearDamping = drag; // Apply drag to slow down naturally
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(transform.right * speed, ForceMode.Impulse);
-        }
-        else
-        {
-            rb.linearVelocity = Vector3.zero; // Stops movement when the key is released
+            rb.AddForce(transform.right * speed, ForceMode.Acceleration);
         }
     }
 }
