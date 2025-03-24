@@ -6,6 +6,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] float maxSpeed = 5f; // Maximum speed
     [SerializeField] float deceleration = 1f; // Speed decrease per second
     [SerializeField] float drag = 2f; // Default damping (friction)
+    [SerializeField] float jumpForce = 1f;
+    private bool canJump = false;
     private float currentSpeed = 0f; // Current movement speed
     private Rigidbody rb;
 
@@ -22,22 +24,29 @@ public class MovePlayer : MonoBehaviour
     private void Start()
     {
         rb.linearDamping = drag; // Apply default friction
+        canJump = true;
     }
 
     void Update()
     {
         // Increase speed when spamming Space
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             currentSpeed += acceleration;
             currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         }
 
         // Apply gradual slowdown when not pressing Space
-        if (!Input.GetKey(KeyCode.Space))
+        if (!Input.GetKey(KeyCode.D))
         {
             currentSpeed -= deceleration * Time.deltaTime;
             currentSpeed = Mathf.Max(0, currentSpeed);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && canJump == true)
+        {
+            rb.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+            canJump = false;
         }
 
         // Move the object using velocity (translation instead of rotation)
@@ -82,6 +91,18 @@ public class MovePlayer : MonoBehaviour
         if (other.gameObject.CompareTag("RedFloor"))
         {
             rb.linearDamping *= 0.25f; // Reduce friction on red floor
+            canJump = true;
         }
+
+        if (other.gameObject.CompareTag("BlueFloor"))
+        {
+            canJump = true;
+        }
+
+        if (other.gameObject.CompareTag("NormalFloor"))
+        { 
+            canJump = true;
+        }
+
     }
 }
