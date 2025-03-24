@@ -9,6 +9,8 @@ public class MovePlayer : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform ShootPosition;
 
+    [SerializeField] int playerHp;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,20 +45,26 @@ public class MovePlayer : MonoBehaviour
 
         else
         {
-            rb.linearDamping = 0f;
+            rb.linearDamping = drag;
         }
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            playerHp -= 1;
+            Destroy(other.gameObject);
+
+            if (playerHp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
-        if(other.gameObject.name == "RedFloor")
+        if(other.gameObject.CompareTag("RedFloor"))
         {
-            maxSpeed = 3f;
-
+            //maxSpeed = 3f;
+            rb.linearDamping *= 0.25f;
         }
     }
 }
