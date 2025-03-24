@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] int speed;
-    public float maxSpeed = 5f;
-    [SerializeField] float drag = 2f; // Adjust to control slowdown speed
-    Rigidbody rb;
+    [SerializeField] float acceleration = 2f; // Speed increase per button press
+    [SerializeField] float maxSpeed = 5f; // Maximum speed
+    [SerializeField] float deceleration = 1f; // Speed decrease per second
+    [SerializeField] float drag = 2f; // Default damping (friction)
+    private float currentSpeed = 0f; // Current movement speed
+    private Rigidbody rb;
+
     public GameObject BulletPrefab;
     public Transform ShootPosition;
 
@@ -18,36 +21,51 @@ public class MovePlayer : MonoBehaviour
 
     private void Start()
     {
-        rb.linearDamping = drag; // Apply drag to slow down naturally
+        rb.linearDamping = drag; // Apply default friction
     }
 
     void Update()
     {
+        // Increase speed when spamming Space
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(Vector3.right * speed, ForceMode.Acceleration);
+            currentSpeed += acceleration;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         }
 
-        if(rb.angularVelocity.magnitude > maxSpeed)
+        // Apply gradual slowdown when not pressing Space
+        if (!Input.GetKey(KeyCode.Space))
+        {
+            currentSpeed -= deceleration * Time.deltaTime;
+            currentSpeed = Mathf.Max(0, currentSpeed);
+        }
+
+        // Move the object using velocity (translation instead of rotation)
+        rb.linearVelocity = new Vector3(currentSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
+
+        // Limit max angular velocity
+        if (rb.angularVelocity.magnitude > maxSpeed)
         {
             rb.angularVelocity = rb.angularVelocity.normalized * maxSpeed;
         }
 
+        // Shooting
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Instantiate(BulletPrefab, ShootPosition.transform.position, ShootPosition.transform.rotation);
         }
 
-        if(Input.GetKey(KeyCode.C))
+        // Adjust damping dynamically (e.g., crouching)
+        if (Input.GetKey(KeyCode.C))
         {
-            rb.linearDamping = 5f;
+            rb.linearDamping = 5f; // Higher friction when crouching
         }
-
         else
         {
             rb.linearDamping = drag;
         }
     }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -61,10 +79,9 @@ public class MovePlayer : MonoBehaviour
             }
         }
 
-        if(other.gameObject.CompareTag("RedFloor"))
+        if (other.gameObject.CompareTag("RedFloor"))
         {
-            //maxSpeed = 3f;
-            rb.linearDamping *= 0.25f;
+            rb.linearDamping *= 0.25f; // Reduce friction on red floor
         }
     }
 }
