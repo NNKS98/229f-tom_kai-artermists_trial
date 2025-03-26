@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] float acceleration = 2f; // Speed increase per button press
-    [SerializeField] float maxSpeed = 5f; // Maximum speed
-    [SerializeField] float deceleration = 1f; // Speed decrease per second
-    [SerializeField] float drag = 2f; // Default damping (friction)
+    [SerializeField] float acceleration = 2f;
+    [SerializeField] float maxSpeed = 5f; 
+    [SerializeField] float deceleration = 1f;
+    [SerializeField] float drag = 2f; 
     [SerializeField] float jumpForce = 1f;
     private bool canJump = false;
-    private float currentSpeed = 0f; // Current movement speed
+    private float currentSpeed = 0f;
     private Rigidbody rb;
 
     public GameObject BulletPrefab;
@@ -23,20 +23,20 @@ public class MovePlayer : MonoBehaviour
 
     private void Start()
     {
-        rb.linearDamping = drag; // Apply default friction
+        rb.linearDamping = drag;
         canJump = true;
     }
 
     void Update()
     {
-        // Increase speed when spamming Space
+        
         if (Input.GetKeyDown(KeyCode.D))
         {
             currentSpeed += acceleration;
             currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         }
 
-        // Apply gradual slowdown when not pressing Space
+        
         if (!Input.GetKey(KeyCode.D))
         {
             currentSpeed -= deceleration * Time.deltaTime;
@@ -48,7 +48,7 @@ public class MovePlayer : MonoBehaviour
             rb.AddForce(0, jumpForce, 0, ForceMode.Impulse);
             canJump = false;
         }
-
+        
         // Move the object using velocity (translation instead of rotation)
         rb.linearVelocity = new Vector3(currentSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
 
@@ -90,18 +90,22 @@ public class MovePlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("RedFloor"))
         {
-            rb.linearDamping *= 0.25f; // Reduce friction on red floor
+            rb.linearDamping *= 2f; // Reduce friction on red floor
             canJump = true;
+            maxSpeed = 5f;
         }
 
         if (other.gameObject.CompareTag("BlueFloor"))
         {
+            rb.linearDamping *= 0.25f;
             canJump = true;
+            maxSpeed = 20f;
         }
 
         if (other.gameObject.CompareTag("NormalFloor"))
         { 
             canJump = true;
+            maxSpeed = 10f;
         }
 
     }
