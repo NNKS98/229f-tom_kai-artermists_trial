@@ -29,12 +29,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            var enemyRb = other.gameObject.GetComponent<Rigidbody>();
-            enemyRb.AddForce(Vector3.right * 5, ForceMode.Impulse);
-            Destroy(other.collider);
+            //var enemyRb = other.gameObject.GetComponent<Rigidbody>();
+            //enemyRb.AddForce(Vector3.right * 5, ForceMode.Impulse);
+            Destroy(other.gameObject);
         }
     }
 
