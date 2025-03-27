@@ -14,7 +14,7 @@ public class MovePlayer : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform ShootPosition;
 
-    [SerializeField] int playerHp;
+    public int playerHp;
 
     private void Awake()
     {
