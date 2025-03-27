@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        mass = GetComponent<Rigidbody>().mass;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
