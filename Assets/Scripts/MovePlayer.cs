@@ -15,6 +15,7 @@ public class MovePlayer : MonoBehaviour
     public Transform ShootPosition;
 
     public int playerHp;
+    public GameWin GameWin;
 
     private void Awake()
     {
@@ -108,5 +109,11 @@ public class MovePlayer : MonoBehaviour
             maxSpeed = 10f;
         }
 
+
+        if (other.gameObject.CompareTag("GameWin"))
+        {
+            Time.timeScale *= 0;
+            //GameWin.DisplayWin();
+        }
     }
 }
