@@ -15,7 +15,7 @@ public class MovePlayer : MonoBehaviour
     public Transform ShootPosition;
 
     public int playerHp;
-    public GameWin GameWin;
+    public GameManager GameManager;
 
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class MovePlayer : MonoBehaviour
         // Shooting
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Instantiate(BulletPrefab, ShootPosition.transform.position, ShootPosition.transform.rotation);
+            Instantiate(BulletPrefab, ShootPosition.transform.position, Quaternion.identity);
         }
 
         // Adjust damping dynamically (e.g., crouching)
@@ -85,6 +85,7 @@ public class MovePlayer : MonoBehaviour
 
             if (playerHp <= 0)
             {
+                GameManager.GameOver();
                 Destroy(gameObject);
             }
         }
@@ -104,16 +105,18 @@ public class MovePlayer : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("NormalFloor"))
-        { 
+        {
             canJump = true;
             maxSpeed = 10f;
         }
+    }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject.CompareTag("GameWin"))
         {
-            Time.timeScale *= 0;
-            //GameWin.DisplayWin();
+            GameManager.GameWin();
         }
     }
 }

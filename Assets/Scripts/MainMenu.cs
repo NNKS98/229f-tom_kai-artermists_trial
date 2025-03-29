@@ -8,4 +8,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("SampleScene");
     }
 
+    public void Credit()
+    {
+        SceneManager.LoadSceneAsync("CreditScene");
+    }
 }
