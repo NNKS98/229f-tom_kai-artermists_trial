@@ -92,7 +92,7 @@ public class MovePlayer : MonoBehaviour
 
         if (other.gameObject.CompareTag("RedFloor"))
         {
-            rb.linearDamping *= 2f; // Reduce friction on red floor
+            rb.linearDamping *= 2f;
             canJump = true;
             maxSpeed = 5f;
         }

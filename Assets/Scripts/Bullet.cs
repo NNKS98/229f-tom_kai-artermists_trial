@@ -14,18 +14,11 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mass = GetComponent<Rigidbody>().mass;
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Shoot();
         Destroy(gameObject ,2);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision other)
