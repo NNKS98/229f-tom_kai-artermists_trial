@@ -493,6 +493,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1470,6 +1474,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 28581c68a20ddf14e84df7770568a54e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2242,7 +2250,7 @@ PrefabInstance:
     - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 4cebc696f87e6e546b7da1d4cc522276, type: 2}
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6153,7 +6161,7 @@ PrefabInstance:
     - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 4cebc696f87e6e546b7da1d4cc522276, type: 2}
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9749,6 +9757,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12660,6 +12672,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 28581c68a20ddf14e84df7770568a54e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13642,6 +13658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14614,6 +14634,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15056,6 +15080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5230706181188279321, guid: 50f68dd6a8fd58c49a4211f5fb1faea9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 06fee8906325b4b438790ff08241a085, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
