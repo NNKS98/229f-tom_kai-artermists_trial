@@ -65,12 +65,8 @@ public class MovePlayer : MonoBehaviour
             Instantiate(BulletPrefab, ShootPosition.transform.position, Quaternion.identity);
         }
 
-        // Adjust damping dynamically (e.g., crouching)
+        // Adjust  crouching
         if (Input.GetKey(KeyCode.C))
-        {
-            rb.linearDamping = 5f; // Higher friction when crouching
-        }
-        else
         {
             rb.linearDamping = drag;
         }
